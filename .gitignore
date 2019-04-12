@@ -1,0 +1,8 @@
+/.gradle/
+/.classpath
+/.project
+/.settings
+/build
+/gradle.properties
+/.pydevproject
+.DS_Store

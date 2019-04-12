@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+String propValue(String propName, String defValue) {
+    (project.hasProperty(propName) && project.getProperty(propName)) ? project.getProperty(propName) : defValue
+}
+
+version = propValue("ci_version","master");
+group = "com.softwareplumbers.dms"
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+
+repositories {
+  maven { url propValue("proxyMavenCentral", "https://repo.maven.apache.org/maven2/") }
+  maven { 
+    url 'https://nexus.softwareplumbers.com/repository/maven-oss' 
+    credentials { 
+      username propValue("mavenUploadUser","") 
+      password propValue("mavenUploadPassword","")
+    }
+  }
+  ivy {
+        url 'https://nexus.softwareplumbers.com/repository/generic'
+        layout 'pattern', {
+            artifact '/[organisation]/[module]-[revision].[ext]'
+        }       
+        credentials {
+            username = propValue("mavenUploadUser","") 
+            password = propValue("mavenUploadPassword","")
+        }
+    }
+}
+
+configurations.all {
+  resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: "https://nexus.softwareplumbers.com/repository/maven-oss") {
+        authentication(userName: propValue("mavenUploadUser",""), password: propValue("mavenUploadPassword",""))
+      }
+    }
+  }  
+}
+
+

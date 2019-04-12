@@ -1,0 +1,40 @@
+<keycloak-saml-adapter>
+    <!--
+        Expect the following system properties
+        saml.entity.id (e.g. localhost-test-8080)
+        saml.sso.binding.url (e.g. https://auth.softwareplumbers.com/auth/realms/doctane-test/protocol/saml)
+        saml.slo.binding.url (e.g. https://auth.softwareplumbers.com/auth/realms/doctane-test/protocol/saml)
+
+    -->
+    <SP entityID="${saml.entity.id}"
+        sslPolicy="EXTERNAL"
+        logoutPage="SPECIFY YOUR LOGOUT PAGE!">
+        <Keys>
+            <Key signing="true">
+                <PrivateKeyPem>
+                    MIIEowIBAAKCAQEAl+w8HFpWEb+Qqvg81YYk0hp/EbYSBDbCCaUfTH3QFG6CFsvRLbvyoB9fqOF6v0cJQ9jIKbJqG782GXoeFlA9m2wg7O3FGapBuE4Vtpi0WzcT7Ekb7KMO+KKN1NGvOF67UQAOoH6r9YTyQJPMowHB3Crf8mtC/JYq4hw8DyZvF5OtF6AGfQ1XUNTkaVT4wz9ghH0DRy9gJJR/7aoABT0bFWU2A2LfjHlXPinnfvHzE23PWkq5BY/UJvxyXU11OEqFIovLooBGYcZkkTb2ibxSmsbF7mKTx5YXYhO+7U4KY5GQRu8rzwduVuU5xmDAdzH61i6RRTpEXUlI45BSp7oPVQIDAQABAoIBAQCHzqT5j4OrP/z56Qiws8bMjuUSlxjJ7Y1Ng+9TuJA/A36FFFP8tyuwGfuwg0fwH3dX0D02kQgrn6Wj5rdoqPg5rNJOGkr8o2c2c48TeLSZacYEjmJJCoaCmwWAvqUNFhoK0atBq5ra0qqgMb9X5GVBBI7HLT1ngHH7SNQjku7yOi8+z3EuAYRHfFLwB65TYkMjG+Cp++fVguc32HBcRc+sTSjXxLFhbcxqEreD+d1EtHNP8F85gw2EbZBTAI0mYHxcsBN9H1U6XygAmSGzUHpnK30qix/iRt6or9kQICq/h0G/BALJujB0vLcKLRHRd5QACVDqbB2K4+jOCKH8VzQhAoGBAM0y225Jp/0DDQPod+0bd3jAn5nlVy7Y0Usn3gpy6HpKULv8IRAuELI5yx/K7DSdgBHrRCVCDZcim6EdvUZRAA7c4U6FHcQOUquLd/GRRb03mhM1iMM6GMPGC/Nk1FkBjZRxyCQWOXuFee1wXqQlPpIDmhg189gY8YdunhPUqIS5AoGBAL2I1/GV9etW0+wki8sdRpOsL3DmEvdREqhV2JP/PZ8r73/d2gUSdTipZX+GiU+QPW9Rouc3lJPzWDyAJfEKq3HXKZ/7+YZpt+x2vxwgzJ/ij6Yh/UgkM8aYognaqhaNTDARKtCw18wLvJWthSd3BZOjhoQmslePECIJXuBlHMl9AoGAS7/Hc0orgmIa7uNlShlGnEP3ZvdbnMabVHQuKotKuMIwVYT4q6FltnVRP7ZIRhASVAsWh+5/V9iFvQ9ebNPAAryVS8gmOdbTu9HrgDiRlw0sioTLrM4IkFTO2pXRMd455p+uM2wk4i1e2kEOHuhE1eAQhXl9P7vNhaJXJpjtcLkCgYBmSPuA/RUCNJGZ1v86VkpIV5wiqYeCwNX40ptXA2AWDnfp4ahPJG7ubTzBXbGspoMBGGV5sp0UWzc7L01KkB+GCEAGfs1ipJsFme/5FhpYDsTHO4Cc9iya+LQ57S/ti8OaDSm2BjnvfEYB4OsDKVBxJMbrepa0ehiSxcvV/btTYQKBgCP86QaRSHXi4cVzmD3RGfOOgAub4eOZaVEDFGh1PC1hH3gwxQHZovbOhh8uenffpdW2A2TL9rzQK35X5hKs6EbiJwcsaraCrGoXr5IMfwJEZop1tTBOor6HhxOegcAUxxL+uLg2/mFv+UWBTzl+GUfywsUyeSUKm0Kb3iJfQIKA
+                </PrivateKeyPem>
+                <CertificatePem>
+                    MIICtTCCAZ0CBgFqDoNQ/TANBgkqhkiG9w0BAQsFADAeMRwwGgYDVQQDDBNsb2NhbGhvc3QtdGVzdC04MDgwMB4XDTE5MDQxMTIyMjU0OFoXDTI5MDQxMTIyMjcyOFowHjEcMBoGA1UEAwwTbG9jYWxob3N0LXRlc3QtODA4MDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJfsPBxaVhG/kKr4PNWGJNIafxG2EgQ2wgmlH0x90BRughbL0S278qAfX6jher9HCUPYyCmyahu/Nhl6HhZQPZtsIOztxRmqQbhOFbaYtFs3E+xJG+yjDviijdTRrzheu1EADqB+q/WE8kCTzKMBwdwq3/JrQvyWKuIcPA8mbxeTrRegBn0NV1DU5GlU+MM/YIR9A0cvYCSUf+2qAAU9GxVlNgNi34x5Vz4p537x8xNtz1pKuQWP1Cb8cl1NdThKhSKLy6KARmHGZJE29om8UprGxe5ik8eWF2ITvu1OCmORkEbvK88HblblOcZgwHcx+tYukUU6RF1JSOOQUqe6D1UCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAhgN81+dQ+ejvwCrebTXKmqDng1qFk142M8iq2qfT+9HYh/ndThiTQM0tsc5dvX6Gha1D+O/tso+budz4vuCwZ6aFouRjRogrhntSTNvxieavZ6hJJz0bXMUi4o1NAx+e5Q+bsLk6FCjJ9vEHpYqAGh1VSejaFHlW0yvo5F3Idc20P4GLqEi8im4FARx6iD3kfKL4T4cOrL5zOM3xXwlKGZK2fyoBJGKLjqkcpj4gZtsiUVZjZjDSJwTmyIYclK840sYghDxFqm6BHevKbHDMQlNhBSpL8/rpml79gff0ib43RPcBjH0sI9UVHH5o9rZ7dGjVlZOk90byAsBWtz537A==
+                </CertificatePem>
+            </Key>
+        </Keys>
+        <IDP entityID="idp"
+             signatureAlgorithm="RSA_SHA256"
+             signatureCanonicalizationMethod="http://www.w3.org/2001/10/xml-exc-c14n#">
+            <SingleSignOnService signRequest="true"
+                                 validateResponseSignature="true"
+                                 validateAssertionSignature="false"
+                                 requestBinding="POST"
+                                 bindingUrl="${saml.sso.binding.url}"/>
+            <SingleLogoutService signRequest="true"
+                                 signResponse="true"
+                                 validateRequestSignature="true"
+                                 validateResponseSignature="true"
+                                 requestBinding="POST"
+                                 responseBinding="POST"
+                                 postBindingUrl="${saml.slo.binding.url}"
+                                 redirectBindingUrl="${saml.slo.binding.url}"/>
+        </IDP>
+    </SP>
+</keycloak-saml-adapter>
